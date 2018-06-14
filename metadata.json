@@ -1,0 +1,6 @@
+{
+  "name": "2-3 multisig wallet",
+  "version": "0.0.1",
+  "description": "A simple multisig wallet using a 2-3 signature quorom to execute transfer of funds",
+  "maintainer": "Kevin Leffew, kevin@wakefintech.club"
+}
