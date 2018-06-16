@@ -7,4 +7,4 @@ This demo app is designed to be deployed on the STRATO blockchain platform.  It 
 
 The idea behind a multi signature wallet is that funds (ether) are held in smart contract and only released to someone else if a majority of the participants sign off on the withdrawal.
 
-In this implementation, there are three participants and funds can be withdrawn if 2 out of three participants approve the withdrawal.
+In this implementation, there are three participants and funds can be withdrawn if 2 out of three participants approve the withdrawal with a signed message.  Anyone may send ETH to the contract, but only the quorom may move them.  This contract is not ERC20 compatible.
