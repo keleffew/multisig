@@ -1,4 +1,4 @@
-pragma solidity ^0.4.17;
+pragma solidity ^0.4.8;
 
 /// @title 2 of 3 Multisig Wallet for use with Strato
 contract multisig {
@@ -15,12 +15,12 @@ contract multisig {
     uint constant minimum_sigs = 2;
 
     modifier isOwner() {
-        require(msg.sender == _owner);
+        require (msg.sender == _owner);
         _;
     }
 
     modifier approvedSigner() {
-        require(msg.sender == _owner || msg.sender == _owner2 || msg.sender == _owner3);
+        require (msg.sender == _owner || msg.sender == _owner2 || msg.sender == _owner3);
         _;
     }
 
@@ -61,8 +61,8 @@ contract multisig {
     }
 
 //deposit funds to multisig contract and log as an event
-    function depositToWallet() public payable {
-        emit DepositFunds(msg.sender, msg.value);
+    function depositToWallet() public {
+        DepositFunds(msg.sender, msg.value);
     }
 
 //transfer funds from multisig contract to another address
@@ -80,7 +80,7 @@ contract multisig {
         _transactions[transactionId] = transaction;
         _pendingTransactions.push(transactionId);
         //emit event for frontend
-        emit TransactionCreated(msg.sender, to, amount, transactionId);
+        TransactionCreated(msg.sender, to, amount, transactionId);
     }
 
     function signTransaction(uint transactionId) approvedSigner public {
@@ -94,16 +94,16 @@ contract multisig {
         transaction.signatures[msg.sender] = 1;
         transaction.signatureCount++;
         //emit the details of who signed it
-        emit TransactionSigned(msg.sender, transactionId);
+        TransactionSigned(msg.sender, transactionId);
 
         if (transaction.signatureCount >= minimum_sigs) {
             require(address(this).balance >= transaction.amount);
             transaction.to.transfer(transaction.amount);
-            emit TransactionCompleted(transaction.from, transaction.to, transaction.amount, transactionId);
+            TransactionCompleted(transaction.from, transaction.to, transaction.amount, transactionId);
       }
     }
 
-    function walletBalance() view public returns (uint) {
+    function walletBalance() public returns (uint) {
         return address(this).balance;
     }
 
