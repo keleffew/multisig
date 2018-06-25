@@ -15,7 +15,7 @@ For reference this contract is to be used with ETH only, and is not ERC20 compat
 To deploy this contract, follow these steps:
 <ol>
   <li> First, deploy an instance of Strato.  To get started on azure, follow the deployment steps <a href= "https://github.com/blockapps/azure-getting-started">here</a></li>
-  <li> Navigate to the STRATO Management Dashboard by entering the deployed VM's IP/URL in your browser and using the username "admin" with the password you set during deployment/<li>
+  <li> Navigate to the STRATO Management Dashboard by entering the deployed VM's IP/URL in your browser and using the username "admin" with the password you set during deployment</li>
   <li> In the dashboard, navigate to "Accounts" and create a new EOA account with a username</li>
   <li> Next, navigate to "Contracts" -> "+ Create New Contract" -> and fill out the required forms</li>
  
